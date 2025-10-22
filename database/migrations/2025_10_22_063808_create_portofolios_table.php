@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('portofolios', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->string('image');
             $table->timestamps();
-        });
+        });    
     }
 
     /**
