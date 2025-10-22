@@ -1,16 +1,10 @@
 <?php
 
-
 namespace App\Models;
 
-class Portfolio{
-    public $id;
-    public $title;
-    public $description;
+use Illuminate\Database\Eloquent\Model;
 
-    public function __construct($id, $title, $description){
-        $this->id = $id;
-        $this->title = $title;
-        $this->description = $description;
-    }
+class Portfolio extends Model
+{
+    //
 }
