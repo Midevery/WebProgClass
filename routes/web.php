@@ -2,17 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\PortfolioFactory;
+use App\Http\Controllers\FrontController;
 
-Route::get('/', function () {
-    return view('app.welcome');
-});
+Route::get('/', [FrontController::class, 'index']);
 
+Route::get('/about', [FrontController::class, 'about']);
 
-Route::get('/about', function () {
-    return view('app.about');
-});
+Route::get('/PortoDummy', [FrontController::class, 'dummySave']); 
 
-Route::get('/portfolio', function (PortfolioFactory $portfolioFactory) {
-    $portfolios = $portfolioFactory->create();
-    return view('app.portfolio', ['portfolio' => $portfolios]);
-});
+Route::get('/PortoDummyUpdate/{id}', [FrontController::class, 'dummyUpdate']);
+
+Route::get('/PortoDummyDelete/{id}', [FrontController::class, 'dummyDelete']);
