@@ -13,3 +13,5 @@ Route::get('/PortoDummy', [FrontController::class, 'dummySave']);
 Route::get('/PortoDummyUpdate/{id}', [FrontController::class, 'dummyUpdate']);
 
 Route::get('/PortoDummyDelete/{id}', [FrontController::class, 'dummyDelete']);
+
+Route::get('/portofolio', [FrontController::class, 'portofolio']);

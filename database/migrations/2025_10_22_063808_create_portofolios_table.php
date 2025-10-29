@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portfolios', function (Blueprint $table) {
+        Schema::create('portofolios', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('title');
             $table->text('description');
-            $table->string('image_url');
-            $table->string('link');
-        });
+            $table->string('image');
+            $table->timestamps();
+        });    
     }
 
     /**
@@ -26,6 +26,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('portfolios');
+        Schema::table('portofolios', function(Blueprint $table){
+            $table->dropForeign(['category_id']);
+        });
+        Schema::dropIfExists('portofolios');
     }
 };
