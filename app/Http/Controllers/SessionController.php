@@ -8,7 +8,7 @@ class SessionController extends Controller
 {
     //set session jika tidak ada maka tidak perlu
     public function index(){
-        return view('indexSession');
+        return view('app.indexSession');
     }
     public function getSession(){
         $name = session()->get('nama', 'Random nama');
@@ -19,6 +19,18 @@ class SessionController extends Controller
 
     }
     public function storeSession(Request $request){
+        dd($request);
+        //ingin store data ke session tapi belum ke database
+       
+        session()->put(
+            [
+                "nama" => $request->nama,
+                "alamat" => $request->alamat,
+                "telepon" => $request->telepon
+            ]
+        );
+        dd(session());
         
+        return 'data stored';
     }
 }

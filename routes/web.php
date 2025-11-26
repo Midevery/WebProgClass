@@ -20,3 +20,6 @@ Route::get('/portofolio', [FrontController::class, 'portofolio']);
 
 Route::get('/session/set', [SessionController::class, 'index']);
 Route::get('/session/get', [SessionController::class, 'getSession']);
+
+
+Route::post('session/set', [SessionController::class, 'storeSession']);
