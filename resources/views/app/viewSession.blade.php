@@ -11,6 +11,8 @@ Test
 
 <div>
     <p>Name : {{$name}}</p>
+    <p>Alamat : {{$alamat}}</p>
+    <p>Telepon : {{$telpon}}</p>
 </div>
 
 @endsection

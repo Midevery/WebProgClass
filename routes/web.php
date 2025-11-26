@@ -26,8 +26,10 @@ Route::get('portofolios/create', [PortofolioController::class, 'create'])->name(
 Route::post('portofolios', [PortofolioController::class, 'store'])->name('portofolios.store');
 Route::get('/portofolio', [FrontController::class, 'portofolio']);
 
-Route::get('/session/set', [SessionController::class, 'index']);
-Route::get('/session/get', [SessionController::class, 'getSession']);
+Route::get('/session/set', [SessionController::class, 'index'])->name('session.set');
+Route::get('/session/get', [SessionController::class, 'getSession'])->name('session.get');
 
 
-Route::post('session/set', [SessionController::class, 'storeSession']);
+Route::post('session/set', [SessionController::class, 'storeSession'])->name('session.store');
+Route::get('session/delete', [SessionController::class, 'deleteSession'])->name('session.delete');
+

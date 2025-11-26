@@ -3,7 +3,13 @@
 @section('content')
 
 <div>
-    <form action="/session/set" method="POST">
+    @if(session('success'))
+    <div class = "alert alert-info mb-5">
+        Data berhasil dimasukkan
+    </div>
+    @endif
+
+    <form action="{{route('session.store')}}" method="POST">
         @csrf
 
         <div>
