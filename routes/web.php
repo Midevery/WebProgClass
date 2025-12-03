@@ -5,7 +5,8 @@ use App\Models\PortfolioFactory;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\SessionController;
-
+use App\Http\Controllers\DemoController;
+use App\Http\Middleware\CustomeMiddleware;
 
 // Route::get('/', [FrontController::class, 'index']);
 
@@ -33,3 +34,15 @@ Route::get('/session/get', [SessionController::class, 'getSession'])->name('sess
 Route::post('session/set', [SessionController::class, 'storeSession'])->name('session.store');
 Route::get('session/delete', [SessionController::class, 'deleteSession'])->name('session.delete');
 
+Route::get('demo/index', [DemoController::class, 'index'])->name('demo.index');
+// Route::get('demo/restricted', [DemoController::class, 'restricted'])->name('demo.restricted')->middleware(CustomeMiddleware::class);
+
+//route group untuk middleware
+Route::middleware([CustomeMiddleware::class])->group(function(){
+    Route::get('demo/restricted', [DemoController::class, 'restricted'])->name('demo.restricted');
+    Route::get('demo/dashboard', [DemoController::class, 'dashboard'])->name('demo.dashboard');
+    Route::get('demo/profile', [DemoController::class, 'profile'])->name('demo.profile');
+});
+Route::get('demo/login', [DemoController::class, 'login'])->name('demo.login');
+Route::post('demo/login', [DemoController::class, 'auth'])->name('demo.login.post');
+Route::post('demo/logout', [DemoController::class, 'logout'])->name('demo.logout');

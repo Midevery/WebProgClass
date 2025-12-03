@@ -20,6 +20,29 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/about">About</a>
                 </li>
+                <!-- kalau session -->
+                @if(session()->has('user_id'))
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Dashboard <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Profile</a>
+                    </li>
+                @endif
+                @if(!session()->has('user_id'))
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{route('demo.login')}}">Login <span class="sr-only"></span></a>
+                    </li>
+                    
+                @endif
+                <li class="nav-item">
+                    @if(session()->has('user_id'))
+                        <form action="{{route('demo.logout')}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+                    @endif
+                </li>
             </ul>
         </div>
 
